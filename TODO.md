@@ -126,7 +126,7 @@ void driving();
 if !obstacle :
 go_forward(20);
 else :
-pendant 1s :
+during N seconde:
 turn(20, r)
 
 
