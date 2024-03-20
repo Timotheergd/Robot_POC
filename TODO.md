@@ -67,7 +67,6 @@ output : message sent by the other Xbee or "" by default
 ## Voiture
 
 
-
 int get_distance();
 /*
 output : the distance read from the ultrason distance detector
@@ -92,7 +91,4 @@ Stop the motors
 
 
 ### Manuel
-
-
-### Bluetooth
 
