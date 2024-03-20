@@ -43,14 +43,38 @@ use the 2 buttons
 
 
 ## Xbee
-mqghghjgeùlkgrjljklfgq
+
+void send_msg(string msg);
+/*
+input : message to send to the other Xbee
+*/
+
+string receive_msg();
+/*
+output : message sent by the other Xbee or "" by default
+*/
+
+/*
+void set_led_motor_state(int speed, int direction);
+input : 
+    - speed : speed of the motor (0-20)
+    - direction : direction of the motor left(0) or strait(1) or right(2)
+output : for each motor, green if speed forward, red if backward, off if 0
+*/
+
 
 
 ## Voiture
 
-- ultrason
+int get_distance();
+/*
+output : the distance read from the ultrason distance detector
+*/
+
+
 
 ### Autonome
+
 
 
 ### Manuel
