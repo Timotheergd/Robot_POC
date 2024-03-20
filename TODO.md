@@ -49,7 +49,7 @@ use the 2 buttons
 | Message | Code |
 | --- | --- |
 | Mode auto | a |
-| Mode Teleocommande | t |
+| Mode Telecommande | t |
 | Mode Bluetooth | b |
 | Vitesse | value |
 | Direction | **l**(eft)/**f**(orward)/**r**(ight) |
