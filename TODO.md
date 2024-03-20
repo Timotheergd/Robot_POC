@@ -116,6 +116,21 @@ void bipbip
 
 ### Autonome
 
+void do_BIP();
+/*
+ le robot émet 5 bips de 1s
+*/
+
+void driving();
+/*
+if !obstacle :
+go_forward(20);
+else :
+    pendant 1s :
+        turn(20, r)
+
+
+*/
 
 ### Manuel
 
