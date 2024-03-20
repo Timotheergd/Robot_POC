@@ -128,6 +128,12 @@ go_forward(20);
 else :
 during N seconde:
 turn(20, r)
+during N seconde:
+turn(20, l)
+during N seconde:
+turn(20, l)
+during N seconde:
+turn(20, r)
 
 
 */
