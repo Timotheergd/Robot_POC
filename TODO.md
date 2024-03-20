@@ -134,9 +134,25 @@ Buzz if distance to obstacle <= secure_dist
 
 ### Autonome
 
-void setup_auto()
+
+void init_auto();
 /*
-5 bip of 1sec
+ le robot émet 5 bips de 1s
+*/
+
+void driving();
+/*
+if !obstacle :
+go_forward(20);
+else :
+during N seconde:
+turn(20, r)
+during N seconde:
+turn(20, l)
+during N seconde:
+turn(20, l)
+during N seconde:
+turn(20, r)
 */
 
 void turn_angle(int angle)
