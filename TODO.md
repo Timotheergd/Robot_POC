@@ -1,3 +1,4 @@
+
 # TODO
 
 # Notes
@@ -159,4 +160,29 @@ void turn_angle(int angle)
 /*
 Use turn function but use time to do a specific angle
 */
+
+# Composants
+
+Faire un code de test pour chaque composant.
+
+## Telecommande
+
+- potentiomètre 
+- bouton
+- LCD
+- LED bar
+
+## Telecommande + voiture
+
+- Xbee
+- voir schéma (sur tel de Lubin?)
+
+## Voiture
+
+- moteurs pont en H (vitesse, avant arrière,...) 
+- buzzer
+- led bicouleur
+- Bluetooth
+- Capteur ultrason
+
 
