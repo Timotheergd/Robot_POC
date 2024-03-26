@@ -25,7 +25,7 @@ const int pin_right_green = 5;
 
 void setup(){
   // put your setup code here, to run once:
-  
+  Serial.begin(9600);
   pinMode(pin_left_red, OUTPUT);
   pinMode(pin_left_green, OUTPUT);
   pinMode(pin_right_red, OUTPUT);
@@ -65,12 +65,29 @@ void set_led_motor_state(int speed, int direction){
         digitalWrite(pin_right_green, HIGH);
         }
     }
-  if (speed < 10 && speed > 0){
-    if (direction == 3){ //marche arrière
+  if (speed < 10 && speed >= 0){
+    if (direction == 0){ //marche arrière
         //led du moteur de gauche 
         digitalWrite(pin_left_red, HIGH);
         digitalWrite(pin_left_green, LOW);
         //led du moteur de droite 
+        digitalWrite(pin_right_red, HIGH);
+        digitalWrite(pin_right_green, LOW);
+        }
+    else if (direction == 1){ //tourne à gauche
+        //led du moteur de gauche 
+        digitalWrite(pin_left_red, HIGH);
+        digitalWrite(pin_left_green, LOW);
+        //led du moteur de droite 
+        digitalWrite(pin_right_red, LOW);
+        digitalWrite(pin_right_green, LOW);
+    }
+    else{ //tourne à droite
+        direction == 2;  
+        //led du moteur de gauche 
+        digitalWrite(pin_left_red, LOW);
+        digitalWrite(pin_left_green, LOW);
+        //led du moteur de droite
         digitalWrite(pin_right_red, HIGH);
         digitalWrite(pin_right_green, LOW);
         }
@@ -101,7 +118,15 @@ void loop() {
         }
   }
 
-  set_led_motor_state(10, 2);
+  for(int j=0;j<3;j++){
+      for(int i=0;i<3;i++){
+        Serial.print("vitesse:");
+        Serial.println(j*10);
+        set_led_motor_state(j*10, i);
+        delay(500);
+      }
+  }
+  
   
   etatboutonprecedent = etatbouton;
 }
