@@ -170,12 +170,11 @@ Faire un code de test pour chaque composant.
 - potentiomètre 
 - bouton
 - LCD
-- LED bar
+- Coque-tel
 
 ## Telecommande + voiture
 
 - Xbee
-- voir schéma (sur tel de Lubin?)
 
 ## Voiture
 
