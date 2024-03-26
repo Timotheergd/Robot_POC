@@ -38,32 +38,51 @@ void setup(){
 
 
 void set_led_motor_state(int speed, int direction){
-  if (speed > 0){
+  if (speed > 10){
     if (direction == 0){ //tout droit 
-        //led du moteur de gauche (3 rouge et 4 vert)
+        //led du moteur de gauche
         digitalWrite(pin_left_red, LOW);
         digitalWrite(pin_left_green, HIGH);
-        //led du moteur de droite (5 rouge et 6 vert)
+        //led du moteur de droite 
         digitalWrite(pin_right_red, LOW);
         digitalWrite(pin_right_green, HIGH);
         }
     else if (direction == 1){ //tourne à gauche
-        //led du moteur de gauche (3 rouge et 4 vert)
+        //led du moteur de gauche 
         digitalWrite(pin_left_red, LOW);
         digitalWrite(pin_left_green, HIGH);
-        //led du moteur de droite (5 rouge et 6 vert)
-        digitalWrite(pin_right_red, HIGH);
+        //led du moteur de droite 
+        digitalWrite(pin_right_red, LOW);
         digitalWrite(pin_right_green, LOW);
     }
     else{ //tourne à droite
-        //led du moteur de gauche (3 rouge et 4 vert)
-        digitalWrite(pin_left_red, HIGH);
+        direction == 2;  
+        //led du moteur de gauche 
+        digitalWrite(pin_left_red, LOW);
         digitalWrite(pin_left_green, LOW);
-        //led du moteur de droite (5 rouge et 6 vert)
+        //led du moteur de droite
         digitalWrite(pin_right_red, LOW);
         digitalWrite(pin_right_green, HIGH);
         }
     }
+  if (speed < 10 && speed > 0){
+    if (direction == 3){ //marche arrière
+        //led du moteur de gauche 
+        digitalWrite(pin_left_red, HIGH);
+        digitalWrite(pin_left_green, LOW);
+        //led du moteur de droite 
+        digitalWrite(pin_right_red, HIGH);
+        digitalWrite(pin_right_green, LOW);
+        }
+  }
+  if (speed == 10){ //immobile
+        //led du moteur de gauche 
+        digitalWrite(pin_left_red, LOW);
+        digitalWrite(pin_left_green, LOW);
+        //led du moteur de droite 
+        digitalWrite(pin_right_red, LOW);
+        digitalWrite(pin_right_green, LOW);
+        }
   }
 
 
