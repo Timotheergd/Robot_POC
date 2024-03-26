@@ -20,7 +20,7 @@ from potentiomètre
 
 int getDirection()
 /*
-output : left(0) or strait(1) or right(2)
+output : left(0) or straight(1) or right(2)
 use the 2 buttons
 */
 
@@ -89,7 +89,7 @@ Stop the motors and everything else
 Send Urgency message via Xbee
 */
 
-void go_strait(int speed)
+void go_straight(int speed)
 /*
 input : speed of the motors(0-20)
 output : move
@@ -99,7 +99,7 @@ void turn(int speed, int direction)
 /*
 input : 
     - speed : speed of the motor (0-20)
-    - direction : direction of the motor left(0) or strait(1) or right(2)
+    - direction : direction of the motor left(0) or straight(1) or right(2)
 output : turn the car to the direction with the appropriate speed
 
 If the car is stopped, turn staticaly (wheel turn in opposite direction) 
@@ -116,7 +116,7 @@ void set_led_motor_state(int speed, int direction);
 /*
 input : 
     - speed : speed of the motor (0-20)
-    - direction : direction of the motor left(0) or strait(1) or right(2)
+    - direction : direction of the motor left(0) or straight(1) or right(2)
 output : for each motor, green if speed forward, red if backward, off if 0
 */
 
