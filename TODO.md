@@ -77,12 +77,6 @@ int get_distance();
 output : the distance read from the ultrason distance detector
 */
 
-bool obtacle(int distance) ???
-/*
-input : distance of trigger
-output : true if the obsacle in range
-*/
-
 void urgent_stop();
 /*
 Stop the motors and everything else
