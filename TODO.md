@@ -91,7 +91,7 @@ Send Urgency message via Xbee
 
 void go_forward(int speed)
 /*
-input : speed of the motors
+input : speed of the motors(0-20)
 output : move
 */
 
@@ -173,7 +173,7 @@ Faire un code de test pour chaque composant.
 - Coque-tel
 
 ## Telecommande + voiture
-
+led bico
 - Xbee
 
 ## Voiture
