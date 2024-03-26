@@ -56,7 +56,7 @@ output : pirint text on the LCD
 | Mode Telecommande | t |
 | Mode Bluetooth | b |
 | Vitesse | value |
-| Direction | **l**(eft)/**f**(orward)/**r**(ight) |
+| Direction | **l**(eft)/**f**(orward)/**r**(ight)/ **s**(opt)|
 
 void send_msg(char msg);
 /*
