@@ -56,7 +56,7 @@ output : pirint text on the LCD
 | Mode Telecommande | t |
 | Mode Bluetooth | b |
 | Vitesse | value |
-| Direction | **l**(eft)/**f**(orward)/**r**(ight)/ **s**(opt)|
+| Direction | **l**(eft)/**f**(orward)/**r**(ight)/ **s**(opt) |
 
 void send_msg(char msg);
 /*
@@ -89,7 +89,7 @@ Stop the motors and everything else
 Send Urgency message via Xbee
 */
 
-void go_forward(int speed)
+void go_strait(int speed)
 /*
 input : speed of the motors(0-20)
 output : move
