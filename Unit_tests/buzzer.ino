@@ -1,6 +1,6 @@
-// définir les pin utilisés par le buzzer et le bouton stop
-int buzzer = 5; 
-int stop_button_pin = 2;
+// définir les pin utilisés par le buzzer stop et son bouton (à changer stv)
+int buzzer = 10; 
+int stop_button_pin = 11;
 
 // définir les pin utilisés par les moteurs
 #define left_motor_pin_fwd 6
