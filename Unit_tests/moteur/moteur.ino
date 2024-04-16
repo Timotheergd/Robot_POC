@@ -48,7 +48,7 @@ void go_strait(int speed){
         analogWrite(right_motor_pin_fwd, 0);
         analogWrite(right_motor_pin_bck, PWM_SPEED(speed));
     }
-    else { // // Go forward
+    else { // Go forward
         analogWrite(left_motor_pin_fwd, PWM_SPEED(speed));
         analogWrite(left_motor_pin_bck, 0);
         analogWrite(right_motor_pin_fwd, PWM_SPEED(speed));
@@ -61,10 +61,44 @@ void turn(int speed, int direction){
     /*
     Changer les temps après les tests
     */
-    switch(direction){
-      case 
-    }
+    
+    // stopper les moteurs avant de tourner
+    analogWrite(left_motor_pin_fwd, 0);
+    analogWrite(left_motor_pin_bck, 0);
+    analogWrite(right_motor_pin_fwd, 0);
+    analogWrite(right_motor_pin_bck, 0);
+    delay(100);
 
+    switch(direction){
+        case 'l': // Tourner à gauche
+            analogWrite(left_motor_pin_fwd, 0);
+            analogWrite(left_motor_pin_bck, PWM_SPEED(speed));
+            analogWrite(right_motor_pin_fwd, PWM_SPEED(speed));
+            analogWrite(right_motor_pin_bck, 0);
+            break;
+        case 'r': // Tourner à droite
+            analogWrite(left_motor_pin_fwd, PWM_SPEED(speed));
+            analogWrite(left_motor_pin_bck, 0);
+            analogWrite(right_motor_pin_fwd, 0);
+            analogWrite(right_motor_pin_bck, PWM_SPEED(speed));
+            break;
+        case 'g': // Tourner vers l'arrière à gauche
+            analogWrite(left_motor_pin_fwd, 0);
+            analogWrite(left_motor_pin_bck, PWM_SPEED(speed));
+            analogWrite(right_motor_pin_fwd, PWM_SPEED(speed));
+            analogWrite(right_motor_pin_bck, 0);
+            break;
+        case 'd': // Tourner vers l'arrière à droite
+            analogWrite(left_motor_pin_fwd, PWM_SPEED(speed));
+            analogWrite(left_motor_pin_bck, 0);
+            analogWrite(right_motor_pin_fwd, 0);
+            analogWrite(right_motor_pin_bck, PWM_SPEED(speed));
+            break;
+        default: // Aucune action si la direction est invalide
+            break;
+    }
 }
 
-void turn
+
+
+
