@@ -30,7 +30,7 @@ void loop(){
 
 
 
-void avoidObstacle(int speedy, int dir){
+void avoidObstacle(int speedy, char dir){
     int speed = PWM_SPEED(speedy);
     int RangeInCentimeters = ultrasonic.MeasureInCentimeters();
 
