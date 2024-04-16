@@ -1,18 +1,49 @@
+#include "Ultrasonic.h"
+#define DISTANCE_SEUIL 5 // seuil de 5cm
+
+Ultrasonic ultrasonic(2);
+
+void setup() {
+    Serial.begin(9600);
+}
 
 
 void loop() {
-    // Lire les données des capteurs d'obstacles
-    int obstacleDistance = readObstacleSensor(); // Supposons que cette fonction renvoie la distance de l'obstacle en cm
-
-    // Vérifier la distance de l'obstacle
-    if (obstacleDistance < DISTANCE_SEUIL) {
-        // Si un obstacle est proche, réagir en conséquence
-        avoidObstacle();
-    } else {
-        // Sinon, continuer à se déplacer normalement
-        goStraight(SPEED);
+    if (distance <= DISTANCE_SEUIL){
+        Serial.println("Obstacle detected!");
+        eviteObstacle();
+    }else{
+        continueTaVie();
     }
-
-    // Autres tâches à exécuter dans la boucle
 }
+
+void avoidObstacle() {
+    // Arrêter le mouvement avant de tourner
+    stopMotors();
+
+    // Effectuer un virage pour éviter l'obstacle (par exemple, tourner à gauche)
+    turnLeft();
+
+    // Attendre un court instant pour que le robot tourne
+    delay(500);
+
+    // Reprendre le mouvement en avant
+    goStraight();
+}
+
+void goStraight() {
+    // Mettre en marche les moteurs pour avancer
+    // (implémentation spécifique à votre configuration matérielle)
+}
+
+void turnLeft() {
+    // Mettre en marche les moteurs pour tourner à gauche
+    // (implémentation spécifique à votre configuration matérielle)
+}
+
+void stopMotors() {
+    // Arrêter les moteurs
+    // (implémentation spécifique à votre configuration matérielle)
+}
+
 
