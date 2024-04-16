@@ -44,13 +44,18 @@ void avoidObstacle(int speedy, int dir){
         delay(500);
     
         //tourner dans une direction ayant une distance superieur au DISTANCE_SEUIL
-        if(dir=="r" || dir=="f" || RangeInCentimeters <= DISTANCE_SEUIL){
-              Serial.println("forward left");
+        if(dir=="r" || dir=="f"){
+              Serial.println("forward right");
               analogWrite(left_motor_pin_fwd, speed+offset_motor_left);
               analogWrite(left_motor_pin_bck, 0);
         }
-        else if(dir=="l" || dir=="f" || RangeInCentimeters <= DISTANCE_SEUIL){
-              Serial.println("forward right");
+        else if(dir=="l" || dir=="f"){
+              Serial.println("forward left");
+              analogWrite(right_motor_pin_fwd, speed);
+              analogWrite(right_motor_pin_bck, 0);
+        }
+        else if(dir=="f" || RangeInCentimeters <= DISTANCE_SEUIL){
+              Serial.println("forward left");
               analogWrite(right_motor_pin_fwd, speed);
               analogWrite(right_motor_pin_bck, 0);
         }
@@ -66,11 +71,9 @@ void avoidObstacle(int speedy, int dir){
             analogWrite(left_motor_pin_bck, 0);
             analogWrite(right_motor_pin_fwd, speed);
             analogWrite(right_motor_pin_bck, 0);
-        }
     }
-
-    // Attendre un court instant pour que le robot tourne
-    delay(500);
+}
+}
 
 
 
