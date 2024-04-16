@@ -3,47 +3,70 @@
 
 Ultrasonic ultrasonic(2);
 
-void setup() {
+#define left_motor_pin_fwd 6
+#define left_motor_pin_bck 7
+#define right_motor_pin_fwd 8
+#define right_motor_pin_bck 9
+
+#define offset_motor_left -9
+
+// #define PWM_SPEED(speed) (speed-10)*25 // Theorique
+#define PWM_SPEED(speed) (speed*2)-256
+
+
+void setup(){
     Serial.begin(9600);
+    pinMode(left_motor_pin_fwd, OUTPUT);
+    pinMode(left_motor_pin_bck, OUTPUT);
+    pinMode(right_motor_pin_fwd, OUTPUT);
+    pinMode(right_motor_pin_bck, OUTPUT);
+}
+
+void loop(){
+  avoidObstacle(128, "f");
 }
 
 
-void loop() {
+
+void avoidObstacle(int speedy, int dir){
+    int speed = PWM_SPEED(speedy);
+
     if (distance <= DISTANCE_SEUIL){
-        Serial.println("Obstacle detected!");
-        eviteObstacle();
-    }else{
-        continueTaVie();
-    }
-}
-
-void avoidObstacle() {
-    // Arrêter le mouvement avant de tourner
-    stopMotors();
-
-    // Effectuer un virage pour éviter l'obstacle (par exemple, tourner à gauche)
-    turnLeft();
+        //stopper moteurs
+        analogWrite(left_motor_pin_fwd, 0);
+        analogWrite(left_motor_pin_bck, 0);
+        analogWrite(right_motor_pin_fwd, 0);
+        analogWrite(right_motor_pin_bck, 0);
+    
+        delay(500);
+    
+        //tourner dans une direction ayant une distance superieur au DISTANCE_SEUIL
+        if(dir=="r" || dir=="f" || distance <= DISTANCE_SEUIL){
+              Serial.println("forward left");
+              analogWrite(left_motor_pin_fwd, speed+offset_motor_left);
+              analogWrite(left_motor_pin_bck, 0);
+        }
+        else if(dir=="l" || dir=="f" || distance <= DISTANCE_SEUIL){
+              Serial.println("forward right");
+              analogWrite(right_motor_pin_fwd, speed);
+              analogWrite(right_motor_pin_bck, 0);
+        }
+        else{
+            analogWrite(left_motor_pin_fwd, 0);
+            analogWrite(left_motor_pin_bck, -(speed+offset_motor_left));
+            analogWrite(right_motor_pin_fwd, 0);
+            analogWrite(right_motor_pin_bck, -speed);
+        }}
+        else{
+            
+        }
 
     // Attendre un court instant pour que le robot tourne
     delay(500);
 
-    // Reprendre le mouvement en avant
-    goStraight();
-}
 
-void goStraight() {
-    // Mettre en marche les moteurs pour avancer
-    // (implémentation spécifique à votre configuration matérielle)
-}
 
-void turnLeft() {
-    // Mettre en marche les moteurs pour tourner à gauche
-    // (implémentation spécifique à votre configuration matérielle)
-}
 
-void stopMotors() {
-    // Arrêter les moteurs
-    // (implémentation spécifique à votre configuration matérielle)
-}
+
 
 
