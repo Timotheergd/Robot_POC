@@ -1,14 +1,16 @@
+int buzzer; 
+
 void setup(){
-   // initialise le buzzer
+   Serial.begin(9600);
    pinMode(buzzer, OUTPUT);
 }
 
 void loop(){
-   tone(buzzer, 900); // allume le buzzer actif arduino
+   // allume le buzzer
+   tone(buzzer, 900); 
    delay(500);
-   noTone(buzzer); // désactiver le buzzer actif arduino
+   // éteins le buzzer
+   noTone(buzzer); // eteins le buzzer 
    delay(500);
 }
-
-
 
