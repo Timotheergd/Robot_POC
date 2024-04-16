@@ -6,9 +6,9 @@ void setup(){
 }
 
 void loop(){
-   // allume le buzzer
-   tone(buzzer, 900); 
-   delay(500);
+   // allume le buzzer avec frequence de 500Hz
+   tone(buzzer, 500); 
+   delay(5000);
    // éteins le buzzer
    noTone(buzzer); // eteins le buzzer 
    delay(500);
