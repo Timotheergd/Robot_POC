@@ -14,6 +14,8 @@ Ultrasonic ultrasonic(2);
 #define PWM_SPEED(speed) (speed*2)-256
 
 
+
+
 void setup(){
     Serial.begin(9600);
     pinMode(left_motor_pin_fwd, OUTPUT);
@@ -30,8 +32,9 @@ void loop(){
 
 void avoidObstacle(int speedy, int dir){
     int speed = PWM_SPEED(speedy);
+    int RangeInCentimeters = ultrasonic.MeasureInCentimeters();
 
-    if (distance <= DISTANCE_SEUIL){
+    if (RangeInCentimeters <= DISTANCE_SEUIL){
         //stopper moteurs
         analogWrite(left_motor_pin_fwd, 0);
         analogWrite(left_motor_pin_bck, 0);
@@ -41,12 +44,12 @@ void avoidObstacle(int speedy, int dir){
         delay(500);
     
         //tourner dans une direction ayant une distance superieur au DISTANCE_SEUIL
-        if(dir=="r" || dir=="f" || distance <= DISTANCE_SEUIL){
+        if(dir=="r" || dir=="f" || RangeInCentimeters <= DISTANCE_SEUIL){
               Serial.println("forward left");
               analogWrite(left_motor_pin_fwd, speed+offset_motor_left);
               analogWrite(left_motor_pin_bck, 0);
         }
-        else if(dir=="l" || dir=="f" || distance <= DISTANCE_SEUIL){
+        else if(dir=="l" || dir=="f" || RangeInCentimeters <= DISTANCE_SEUIL){
               Serial.println("forward right");
               analogWrite(right_motor_pin_fwd, speed);
               analogWrite(right_motor_pin_bck, 0);
@@ -57,9 +60,14 @@ void avoidObstacle(int speedy, int dir){
             analogWrite(right_motor_pin_fwd, 0);
             analogWrite(right_motor_pin_bck, -speed);
         }}
-        else{
-            
+    else{
+            //continuer tout droit
+            analogWrite(left_motor_pin_fwd, speed + offset_motor_left);
+            analogWrite(left_motor_pin_bck, 0);
+            analogWrite(right_motor_pin_fwd, speed);
+            analogWrite(right_motor_pin_bck, 0);
         }
+    }
 
     // Attendre un court instant pour que le robot tourne
     delay(500);
