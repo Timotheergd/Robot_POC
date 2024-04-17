@@ -23,7 +23,8 @@ void loop(){
    if (digitalRead(stop_button_pin) == LOW) {
       // allumer le buzzer avec une fréquence de 500Hz pendant 5s
       tone(buzzer, 500); 
-      delay(5000);
+      delay(5000); // c'est pas comme ça que ça marche Liam
+   
 
       // arrêter les moteurs 
       analogWrite(left_motor_pin_fwd, 0);
