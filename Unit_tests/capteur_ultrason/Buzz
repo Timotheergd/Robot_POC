@@ -1,0 +1,32 @@
+#define buzzpin 3
+
+#include "Ultrasonic.h"
+
+Ultrasonic ultrasonic(2);
+
+void VincentLagaf(){
+  for(int i=0;i<5;i++){
+  digitalWrite(buzzpin,1);
+  delay(1000);
+  digitalWrite(buzzpin,0);
+  delay(200);
+}
+
+
+void DetectionDistance(long *RangeInCentimeter){
+  *RangeInCentimeters = ultrasonic.MeasureInCentimeters();
+  delay(250);
+  if(RangeInCentimeters<=25){
+    digitalWrite(buzzpin,1);
+  }else{
+    digitalWrite(buzzpin,0);
+  }
+}
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(buzzpin,OUTPUT);
+  VincentLagaf();
+  }
+}
+void loop() {DetectionDistance(&RangeInCentimeters);}
