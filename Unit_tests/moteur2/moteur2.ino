@@ -74,6 +74,7 @@ void loop() {
 void go(int speedy, char dir){
   int speed = PWM_SPEED(speedy);
     // speed btw -255 and 255
+    
     if(speed==0){ // STOP
         analogWrite(left_motor_pin_fwd, 0);
         analogWrite(left_motor_pin_bck, 0);
@@ -82,21 +83,28 @@ void go(int speedy, char dir){
     }
     else if(speed<0){ // Go backward 
         analogWrite(left_motor_pin_fwd, 0);
-        analogWrite(left_motor_pin_bck, -(speed+offset_motor_left));
+        analogWrite(left_motor_pin_bck, -speed-2);
         analogWrite(right_motor_pin_fwd, 0);
-        analogWrite(right_motor_pin_bck, -speed);
+        analogWrite(right_motor_pin_bck, -speed-2);
     }
     else { // // Go forward
+
+        analogWrite(left_motor_pin_bck, 0);
+        analogWrite(right_motor_pin_bck, 0);
         
-        if(dir=='R' || dir=='F'){
+        if(dir=='R'){
           analogWrite(left_motor_pin_fwd, speed+offset_motor_left);
-          analogWrite(left_motor_pin_bck, 0);
+          analogWrite(right_motor_pin_fwd, 0);
         }
-        if(dir=='L' || dir=='F'){
-          Serial.print("dfkjmdlqk ");
-          Serial.println(direction);
+
+        if(dir=='L'){
           analogWrite(right_motor_pin_fwd, speed);
-          analogWrite(right_motor_pin_bck, 0);
+          analogWrite(left_motor_pin_fwd, 0);
+        }
+
+        if(dir=='F'){
+          analogWrite(left_motor_pin_fwd, speed+offset_motor_left);
+          analogWrite(right_motor_pin_fwd, speed);
         }
     }
 }
